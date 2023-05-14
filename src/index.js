@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // Find all widget divs
-const widgetDivs = document.getElementById('.tfg-widget');
+const widgetDivs = document.querySelectorAll('.tfg-widget');
 
 
 /* root.render(
