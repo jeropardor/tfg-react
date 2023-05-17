@@ -1,11 +1,15 @@
+import SidePanel from "../sidePanel/sidePane";
+import View from "../view/view";
+
+import "./ui.css";
 
 const UI = () => {
-
   return (
-  <>
-    <h1>ui...</h1>
-  </>
+    <div className="ui-window">
+      <SidePanel />
+      <View />
+    </div>
   );
-}
+};
 
 export default UI;

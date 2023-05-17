@@ -1,0 +1,8 @@
+
+.ui-window {
+    display: flex;
+    flex-direction: row;
+    
+    background-color: var(--bg-color);
+    border-radius: .5rem;
+}
