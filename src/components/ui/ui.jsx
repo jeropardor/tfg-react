@@ -1,13 +1,19 @@
-import SidePanel from "../sidePanel/sidePane";
-import View from "../view/view";
+import { useState } from "react";
 
-import "./ui.css";
+import SidePanel from "../sidePanel/sidePanel";
+import View from "../view/view";
+import MenuIcon from "../shared/icons/menuIcon";
+
+import "./ui.scss";
 
 const UI = () => {
+  const [sidePanel, setSidePanel] = useState(false);
+
   return (
     <div className="ui-window">
-      <SidePanel />
+      <SidePanel isVisible={sidePanel} />
       <View />
+      <MenuIcon isOpen={sidePanel} setIsOpen={setSidePanel} />
     </div>
   );
 };

@@ -1,0 +1,16 @@
+
+.view-window {
+  margin: .4em;
+  
+  flex-grow: 1;
+
+  color: var(--bg-color);
+  background-color: lightgray;
+  border-radius: .6em;
+}
+
+.view-mock {
+  width: 400px;
+  height: 400px;
+  background-color: gray;
+}

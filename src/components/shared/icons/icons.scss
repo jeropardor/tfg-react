@@ -1,0 +1,12 @@
+
+.icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  & > svg {
+    vertical-align: middle;
+    color: var(--text-color);
+  }
+}

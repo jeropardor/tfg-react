@@ -1,12 +1,16 @@
-// import logo from './logo.svg';
-import "./App.css";
+import IntlWrapper from "./i18n/intlWrapper";
+
 import UI from "./components/ui/ui";
+
+import "./App.scss";
 
 const App = () => {
   return (
-    <div className="App">
-      <UI />
-    </div>
+    <IntlWrapper>
+      <div className="App">
+        <UI />
+      </div>
+    </IntlWrapper>
   );
 };
 

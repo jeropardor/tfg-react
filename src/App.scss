@@ -1,0 +1,27 @@
+:root {
+  --bg-color: #172027;
+  --bg-color-rgb: 23, 32, 39;
+  --text-color: #FFFFFF;
+}
+
+.App {
+  text-align: center;
+  color: var(--text-color);
+
+  width: 100%;
+  height: 100%;
+}
+
+.App * {
+  box-sizing: border-box;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+.vis-hidden {
+  visibility: hidden;
+}
+.dis-hidden {
+  display: none;
+}

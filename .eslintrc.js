@@ -18,5 +18,11 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+              "endOfLine": "auto"
+            }
+        ]
     }
 };

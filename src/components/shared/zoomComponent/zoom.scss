@@ -1,0 +1,35 @@
+.zoomWrapper {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  & > .zoomButtons {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: var(--text-color);
+    border-top-left-radius: .3em;
+
+    & > .icon {
+      font-size: 1.2em;
+      cursor: pointer;
+      background-color: rgba(var(--bg-color-rgb), 0.6);
+
+      & > svg {
+        margin: .1em .15em .2em .1em;
+      }
+
+      &:hover {
+        background-color: rgba(var(--bg-color-rgb), 0.8);
+      }
+    }
+  }
+}
+
