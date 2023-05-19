@@ -1,7 +1,9 @@
 
 .view-window {
+  position: relative;
   margin: .4em;
-  
+  overflow: hidden;
+
   flex-grow: 1;
 
   color: var(--bg-color);
@@ -9,8 +11,16 @@
   border-radius: .6em;
 }
 
-.view-mock {
+.view {
+  display: inline-block;
+  position: relative;
   width: 400px;
   height: 400px;
+  top: 50%;
+  
   background-color: gray;
+}
+
+.isMoving {
+  cursor: grab;
 }

@@ -1,35 +1,50 @@
-.zoomWrapper {
+.zoomWrapper,
+.draggableWrapper {
   position: relative;
-
   width: 100%;
   height: 100%;
+  overflow: hidden;
 
-  & > .zoomButtons {
+
+
+  & > .zoomable {
     position: absolute;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    color: var(--text-color);
-    border-top-left-radius: .3em;
-
-    & > .icon {
-      font-size: 1.2em;
-      cursor: pointer;
-      background-color: rgba(var(--bg-color-rgb), 0.6);
-
-      & > svg {
-        margin: .1em .15em .2em .1em;
-      }
-
-      &:hover {
-        background-color: rgba(var(--bg-color-rgb), 0.8);
-      }
-    }
   }
 }
 
+.zoomButtons {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--text-color);
+  border-top-left-radius: .3em;
+
+  & > .icon {
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: rgba(var(--bg-color-rgb), 0.6);
+
+    & > svg {
+      margin: .15em;
+      margin-right: .25em;
+    }
+
+    &:hover {
+      background-color: rgba(var(--bg-color-rgb), 0.8);
+    }
+  }
+
+  & > .icon:last-child > svg {
+    margin-bottom: .25em;
+  }
+
+  & > .icon.zoomButton-selected {
+    background-color: rgba(var(--bg-color-rgb), 0.9);
+  }
+}

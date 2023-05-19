@@ -1,6 +1,6 @@
 import IntlWrapper from "./i18n/intlWrapper";
 
-import UI from "./components/ui/ui";
+import UI from "./components/ui/UI";
 
 import "./App.scss";
 

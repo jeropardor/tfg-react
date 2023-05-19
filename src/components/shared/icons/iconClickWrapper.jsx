@@ -1,8 +1,8 @@
 import "./icons.scss";
 
-const IconClickWrapper = ({ icon, onClick }) => {
+const IconClickWrapper = ({ icon, onClick, className }) => {
   return (
-    <div onClick={onClick} className="icon">
+    <div onClick={onClick} className={className + " icon"}>
       {icon}
     </div>
   );

@@ -12,16 +12,17 @@
 
   & > .icon {
     position: absolute;
-    top: .2em;
-    left: .2em;
+    top: .15em;
+    left: .15em;
 
-    font-size: 1.3em;
+    font-size: 1.5em;
     svg {
       margin: .2em;
     }
 
     background-color: var(--bg-color);
     border-bottom-right-radius: .5rem;
+    border-top-left-radius: .5em;
     cursor: pointer;
 }
 

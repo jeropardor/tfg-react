@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import OptionButton from "./optionButton";
+import OptionButton from "./OptionButton";
 
 import "./sidePanel.scss";
 

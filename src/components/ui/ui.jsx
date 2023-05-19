@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import SidePanel from "../sidePanel/sidePanel";
-import View from "../view/view";
-import MenuIcon from "../shared/icons/menuIcon";
+import SidePanel from "../sidePanel/SidePanel";
+import View from "../view/View";
+import MenuIcon from "../shared/icons/MenuIcon";
 
 import "./ui.scss";
 
