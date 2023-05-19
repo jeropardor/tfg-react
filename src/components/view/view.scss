@@ -1,26 +1,22 @@
-
-.view-window {
-  position: relative;
-  margin: .4em;
+.view {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
   overflow: hidden;
 
-  flex-grow: 1;
-
-  color: var(--bg-color);
-  background-color: lightgray;
+  margin: .4em;
   border-radius: .6em;
 }
 
-.view {
-  display: inline-block;
-  position: relative;
-  width: 400px;
-  height: 400px;
-  top: 50%;
-  
-  background-color: gray;
-}
+.view-image-container {
+  border: 1px solid rgba(var(--bg-color-rgb), 0.4);
 
-.isMoving {
-  cursor: grab;
+  & > img {
+    user-drag: none;
+    user-select: none;
+    width: 600px;
+    height: auto;
+  }
 }

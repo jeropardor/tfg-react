@@ -1,11 +1,29 @@
+.dragZoomWrapper-window {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  color: var(--bg-color);
+  background-color: lightgray;
+}
+
+.dragZoomWrapper {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+}
+
+.isMoving {
+  cursor: grab;
+}
+
+
 .zoomWrapper,
 .draggableWrapper {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-
-
 
   & > .zoomable {
     position: absolute;
