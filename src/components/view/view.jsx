@@ -4,8 +4,6 @@ import DragZoomWrapper from "../shared/zoomComponent/DragZoomWrapper";
 
 import "./view.scss";
 
-const SCALE_FACTOR = 0.8;
-
 const View = () => {
   const [image, setImage] = useState(null);
 
@@ -14,11 +12,7 @@ const View = () => {
       {image ? (
         <DragZoomWrapper>
           <div className="view-image-container">
-            <img
-              draggable="false"
-              src={URL.createObjectURL(image)}
-              alt="view image"
-            />
+            <img draggable="false" src={URL.createObjectURL(image)} alt="" />
           </div>
         </DragZoomWrapper>
       ) : (

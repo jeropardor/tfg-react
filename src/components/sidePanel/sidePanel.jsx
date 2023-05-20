@@ -26,7 +26,7 @@ const SidePanel = ({ isVisible }) => {
           icon={option.icon}
           text={"options." + option.id}
           onClick={() => setMode(option.id)}
-          className={classNames({ selected: option.id == mode })}
+          className={classNames({ selected: option.id === mode })}
         />
       ))}
     </div>
