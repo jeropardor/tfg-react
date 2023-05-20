@@ -25,10 +25,7 @@ const View = () => {
         <input
           type="file"
           name="image"
-          onChange={(event) => {
-            console.log(event.target.files[0]);
-            setImage(event.target.files[0]);
-          }}
+          onChange={(event) => setImage(event.target.files[0])}
         />
       )}
     </div>

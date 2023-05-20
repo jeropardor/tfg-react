@@ -1,3 +1,7 @@
 {
-    "common.yes": "si"
+    "common.yes": "yes",
+    "common.no": "no",
+
+    "options.default": "Default",
+    "options.create": "Create shape"
 }

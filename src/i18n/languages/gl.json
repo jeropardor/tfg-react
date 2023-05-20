@@ -1,3 +1,7 @@
 {
-    "common.yes": "si"
+    "common.yes": "si",
+    "common.no": "no",
+
+    "options.default": "Por defecto",
+    "options.create": "Crear forma"
 }
