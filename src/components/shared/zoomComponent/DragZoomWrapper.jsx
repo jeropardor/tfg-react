@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 
 import DragWrapper from "./DragWrapper";
@@ -9,7 +9,7 @@ import "./zoom.scss";
 
 const SCALE_FACTOR = 0.8;
 
-const DragZoomWrapper = ({ children }) => {
+const DragZoomWrapper = ({ scale, setScale, children }) => {
   const zoomRef = useRef();
   const viewRef = useRef();
 
@@ -18,7 +18,7 @@ const DragZoomWrapper = ({ children }) => {
     y: 0,
   });
   const [isMoving, setIsMoving] = useState(false);
-  const [scale, setScale] = useState(1);
+  // const [scale, setScale] = useState(1);
 
   const handleDragMove = (e) => {
     if (!isMoving) return;
@@ -55,6 +55,8 @@ const DragZoomWrapper = ({ children }) => {
               translateX(${translate.x}px) 
               translateY(${translate.y}px) 
               scale(${scale})`,
+              /* width: `${ 100 * scale }%`,
+              height: "auto", */
             }}
           >
             {children}

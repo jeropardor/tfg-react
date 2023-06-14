@@ -1,11 +1,11 @@
+import { useEffect } from "react";
 import classNames from "classnames";
 import { FiZoomIn, FiZoomOut, FiMaximize, FiMove } from "react-icons/fi";
 
 import IconClickWrapper from "../icons/IconClickWrapper";
-import { useMode } from "../../../context/ModeContext";
+import { Modes, useMode } from "../../../context/ModeContext";
 
 import "./zoom.scss";
-import { useEffect } from "react";
 
 const ZoomButtons = ({
   isMoving,
@@ -17,7 +17,7 @@ const ZoomButtons = ({
   const { mode, setMode } = useMode();
 
   useEffect(() => {
-    if (mode == "create") setIsMoving(false);
+    if (mode == Modes.Create) setIsMoving(false);
   }, [mode]);
 
   return (
@@ -26,7 +26,9 @@ const ZoomButtons = ({
         icon={<FiMove />}
         onClick={() => {
           setIsMoving((b) => !b);
-          setMode((oldMode) => (oldMode == "create" ? "default" : oldMode));
+          setMode((oldMode) =>
+            oldMode == Modes.Create ? Modes.Defaut : oldMode
+          );
         }}
         className={classNames({
           "zoomButton-selected": isMoving,
