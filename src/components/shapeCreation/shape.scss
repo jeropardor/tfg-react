@@ -13,4 +13,14 @@
         border: 5px solid red;
         background-color: rgba(255, 0, 0, 0.118);
     }
+
+    & > .shape {
+        position: absolute;
+        border: 2px solid red;
+        background-color: rgba(255, 0, 0, 0.118);
+
+        &.selected {
+            outline: 1px solid blue;
+        }
+    }
 }

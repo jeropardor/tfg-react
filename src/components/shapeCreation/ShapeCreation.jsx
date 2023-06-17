@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 
 import { Modes, useMode } from "../../context/ModeContext";
+import { useShapes, useShapesDispatch } from "../../context/ShapesContext";
 
 import "./shape.scss";
 
 const ShapeCreation = ({ scale, children }) => {
-  const [shapes, setShapes] = useState([]);
+  const shapesList = useShapes();
+  const shapesDispatch = useShapesDispatch();
+
   const { mode, setMode } = useMode();
 
   const containerRef = useRef();
@@ -28,7 +31,7 @@ const ShapeCreation = ({ scale, children }) => {
 
   const handleMouseUp = (e) => {
     setIsMouseDown(false);
-    setMode(Modes.Defaut);
+    if (mode === Modes.Create) addDefaultShape();
   };
 
   const handleMouseMove = (e) => {
@@ -50,6 +53,27 @@ const ShapeCreation = ({ scale, children }) => {
     setNewDivLen({ x: x, y: y });
   };
 
+  const resetNewDiv = () => {
+    setIsMouseDown(false);
+    setMode(Modes.Defaut);
+    setNewDivPos({ x: 0, y: 0 });
+    setNewDivLen({ x: 0, y: 0 });
+  };
+
+  const addDefaultShape = () => {
+    shapesDispatch({
+      type: "added",
+      text: "placeholder",
+      position: {
+        x: newDivPos.x,
+        y: newDivPos.y,
+        width: newDivLen.x,
+        height: newDivLen.y,
+      },
+    });
+    resetNewDiv();
+  };
+
   return (
     <div
       ref={containerRef}
@@ -67,6 +91,20 @@ const ShapeCreation = ({ scale, children }) => {
           width: `${newDivLen.x}px`,
         }}
       ></div>
+      {shapesList.map((shape) => (
+        <div
+          key={shape.id}
+          className="shape"
+          style={{
+            top: `${shape.y}px`,
+            left: `${shape.x}px`,
+            height: `${shape.height}px`,
+            width: `${shape.width}px`,
+          }}
+        >
+          {shape.text}
+        </div>
+      ))}
       {children}
     </div>
   );
