@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import classNames from "classnames";
 
+import { useViewer } from "../../../context/ViewerContext";
 import DragWrapper from "./DragWrapper";
 import ZoomWrapper from "./ZoomWrapper";
 import ZoomButtons from "./ZoomButtons";
@@ -9,33 +10,37 @@ import "./zoom.scss";
 
 const SCALE_FACTOR = 0.8;
 
-const DragZoomWrapper = ({ scale, setScale, children }) => {
+const DragZoomWrapper = ({ children }) => {
+  const { viewer, setViewer } = useViewer();
+
   const zoomRef = useRef();
   const viewRef = useRef();
 
-  const [translate, setTranslate] = useState({
-    x: 0,
-    y: 0,
-  });
   const [isMoving, setIsMoving] = useState(false);
-  // const [scale, setScale] = useState(1);
 
   const handleDragMove = (e) => {
     if (!isMoving) return;
 
-    setTranslate({
-      x: translate.x + e.movementX,
-      y: translate.y + e.movementY,
-    });
+    setViewer((params) => ({
+      ...params,
+      x: params.x + e.movementX,
+      y: params.y + e.movementY,
+    }));
   };
 
   const resetPosition = () => {
-    setTranslate({ x: 0, y: 0 });
-    setScale(zoomRef.current.clientHeight / viewRef.current.clientHeight);
+    setViewer({
+      x: 0,
+      y: 0,
+      scale: zoomRef.current.clientHeight / viewRef.current.clientHeight,
+    });
   };
 
   const handleScale = (delta) => {
-    setScale((scale) => scale * (delta * SCALE_FACTOR));
+    setViewer((params) => ({
+      ...params,
+      scale: params.scale * (delta * SCALE_FACTOR),
+    }));
   };
   const handleScaleUp = () => handleScale(2);
   const handleScaleDown = () => handleScale(0.5);
@@ -52,9 +57,9 @@ const DragZoomWrapper = ({ scale, setScale, children }) => {
             className="dragZoomWrapper"
             style={{
               transform: `translateY(-50%) 
-              translateX(${translate.x}px) 
-              translateY(${translate.y}px) 
-              scale(${scale})`,
+              translateX(${viewer.x}px) 
+              translateY(${viewer.y}px) 
+              scale(${viewer.scale})`,
               /* width: `${ 100 * scale }%`,
               height: "auto", */
             }}

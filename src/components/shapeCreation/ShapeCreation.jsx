@@ -5,15 +5,17 @@ import { Modes, useMode } from "../../context/ModeContext";
 import { useShapes, useShapesDispatch } from "../../context/ShapesContext";
 
 import "./shape.scss";
+import { useViewer } from "../../context/ViewerContext";
 
-const ShapeCreation = ({ scale, children }) => {
+const ShapeCreation = ({ children }) => {
+  const { viewer } = useViewer();
   const shapesList = useShapes();
   const shapesDispatch = useShapesDispatch();
 
   const { mode, setMode } = useMode();
 
   const containerRef = useRef();
-  const newDivRef = useRef();
+  // const newDivRef = useRef();
   const [newDivPos, setNewDivPos] = useState({ x: 0, y: 0 });
   const [newDivLen, setNewDivLen] = useState({ x: 0, y: 0 });
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -41,15 +43,15 @@ const ShapeCreation = ({ scale, children }) => {
 
   const setNewDivStart = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / scale;
-    const y = (e.clientY - rect.top) / scale;
+    const x = (e.clientX - rect.left) / viewer.scale;
+    const y = (e.clientY - rect.top) / viewer.scale;
     setNewDivPos({ x: x, y: y });
   };
 
   const setNewDivEnd = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / scale - newDivPos.x;
-    const y = (e.clientY - rect.top) / scale - newDivPos.y;
+    const x = (e.clientX - rect.left) / viewer.scale - newDivPos.x;
+    const y = (e.clientY - rect.top) / viewer.scale - newDivPos.y;
     setNewDivLen({ x: x, y: y });
   };
 
