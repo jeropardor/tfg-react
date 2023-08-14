@@ -30,39 +30,60 @@
   }
 }
 
-.zoomButtons {
+.sideOptions {
   position: absolute;
   right: 0;
-  bottom: 0;
-  overflow: hidden;
-
+  top: 0;
+  height: 100%;
+  
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
 
-  color: var(--text-color);
-  border-top-left-radius: .3em;
+  & > .column-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-  & > .icon {
+  & .zoomButtons {
+    margin-top: auto;
+    overflow: hidden;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    color: var(--text-color);
+    border-top-left-radius: .3em;
+  
+    & > .icon {
+      font-size: 1.2em;
+      cursor: pointer;
+      background-color: rgba(var(--bg-color-rgb), 0.6);
+  
+      & > svg {
+        margin: .15em;
+        margin-right: .25em;
+      }
+  
+      &:hover {
+        background-color: rgba(var(--bg-color-rgb), 0.8);
+      }
+    }
+  
+    & > .icon:last-child > svg {
+      margin-bottom: .25em;
+    }
+  
+    & > .icon.zoomButton-selected {
+      background-color: rgba(var(--bg-color-rgb), 0.9);
+    }
+  }
+
+  & .hideButton {
     font-size: 1.2em;
     cursor: pointer;
+    border-bottom-left-radius: .3em;
     background-color: rgba(var(--bg-color-rgb), 0.6);
-
-    & > svg {
-      margin: .15em;
-      margin-right: .25em;
-    }
-
-    &:hover {
-      background-color: rgba(var(--bg-color-rgb), 0.8);
-    }
-  }
-
-  & > .icon:last-child > svg {
-    margin-bottom: .25em;
-  }
-
-  & > .icon.zoomButton-selected {
-    background-color: rgba(var(--bg-color-rgb), 0.9);
   }
 }

@@ -3,5 +3,6 @@
     "common.no": "no",
 
     "options.default": "Default",
-    "options.create": "Create shape"
+    "options.create": "Create shape",
+    "options.name": "Add name"
 }

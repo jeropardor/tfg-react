@@ -1,12 +1,15 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 
 import { useViewer } from "../../../context/ViewerContext";
 import DragWrapper from "./DragWrapper";
 import ZoomWrapper from "./ZoomWrapper";
 import ZoomButtons from "./ZoomButtons";
+import ShapeList from "../ShapeListComponent/ShapeList";
 
 import "./zoom.scss";
+import IconClickWrapper from "../icons/IconClickWrapper";
+import { FiChevronLeft } from "react-icons/fi";
 
 const SCALE_FACTOR = 0.8;
 
@@ -18,6 +21,8 @@ const DragZoomWrapper = ({ children }) => {
 
   const [isMoving, setIsMoving] = useState(false);
 
+  const [isVisibleShapeList, setIsVisibleShapeList] = useState(false);
+
   const handleDragMove = (e) => {
     if (!isMoving) return;
 
@@ -25,6 +30,14 @@ const DragZoomWrapper = ({ children }) => {
       ...params,
       x: params.x + e.movementX,
       y: params.y + e.movementY,
+    }));
+  };
+
+  const handleCentering = (x, y) => {
+    setViewer((params) => ({
+      x: viewRef.current.clientWidth / 2 - x,
+      y: viewRef.current.clientHeight / 2 - y,
+      scale: 1,
     }));
   };
 
@@ -44,6 +57,10 @@ const DragZoomWrapper = ({ children }) => {
   };
   const handleScaleUp = () => handleScale(2);
   const handleScaleDown = () => handleScale(0.5);
+
+  /* useEffect(() => {
+    console.log(viewer);
+  }, [viewer]); */
 
   return (
     <div className="dragZoomWrapper-window">
@@ -68,13 +85,26 @@ const DragZoomWrapper = ({ children }) => {
           </div>
         </ZoomWrapper>
       </DragWrapper>
-      <ZoomButtons
-        isMoving={isMoving}
-        setIsMoving={setIsMoving}
-        resetPosition={resetPosition}
-        handleScaleUp={handleScaleUp}
-        handleScaleDown={handleScaleDown}
-      />
+      <div className="sideOptions">
+        <div className="column-wrapper">
+          <IconClickWrapper
+            className="hideButton"
+            icon={<FiChevronLeft />}
+            onClick={() => setIsVisibleShapeList((b) => !b)}
+          />
+          <ZoomButtons
+            isMoving={isMoving}
+            setIsMoving={setIsMoving}
+            resetPosition={resetPosition}
+            handleScaleUp={handleScaleUp}
+            handleScaleDown={handleScaleDown}
+          />
+        </div>
+        <ShapeList
+          isVisible={isVisibleShapeList}
+          handleCentering={handleCentering}
+        />
+      </div>
     </div>
   );
 };

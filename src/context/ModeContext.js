@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react";
 export const Modes = {
   Defaut: "default",
   Create: "create",
+  Name: "name",
 };
 
 const ModeContext = createContext();

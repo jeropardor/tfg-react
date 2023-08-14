@@ -30,7 +30,7 @@ function shapesReducer(shapes, action) {
         ...shapes,
         {
           id: window.crypto.randomUUID(),
-          type: action.type,
+          type: action.shapeType,
           text: action.text,
           selected: false,
           ...action.position,
@@ -55,14 +55,15 @@ function shapesReducer(shapes, action) {
   }
 }
 
-const ShapeTypes = {
-  Defaut: "default",
+export const ShapeTypes = {
+  Default: "default",
+  Name: "name",
 };
 
 const initialShapes = [
   {
     id: 0,
-    type: ShapeTypes.Defaut,
+    type: ShapeTypes.Default,
     text: "lorem ipsum",
     selected: false,
     x: 0,

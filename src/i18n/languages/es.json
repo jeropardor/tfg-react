@@ -3,5 +3,6 @@
     "common.no": "no",
 
     "options.default": "Por defecto",
-    "options.create": "Crear forma"
+    "options.create": "Crear forma",
+    "options.name": "Añadir nombre"
 }

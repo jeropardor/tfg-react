@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FiTool, FiPlusSquare } from "react-icons/fi";
+import { FiMousePointer, FiPlusSquare, FiAlertCircle } from "react-icons/fi";
 
 import { Modes, useMode } from "../../context/ModeContext";
 import OptionButton from "./OptionButton";
@@ -10,8 +10,9 @@ const SidePanel = ({ isVisible }) => {
   const { mode, setMode } = useMode();
 
   const modes = [
-    { id: Modes.Defaut, icon: <FiTool /> },
+    { id: Modes.Defaut, icon: <FiMousePointer /> },
     { id: Modes.Create, icon: <FiPlusSquare /> },
+    { id: Modes.Name, icon: <FiAlertCircle /> },
   ];
 
   return (
