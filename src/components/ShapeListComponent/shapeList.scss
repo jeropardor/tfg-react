@@ -1,0 +1,55 @@
+.shapeList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5em;
+
+  overflow: hidden;
+
+  color: var(--text-color);
+  background-color: rgba(var(--bg-color-rgb), 0.6);
+
+  & > div {
+    margin: .2rem .3rem;
+  }
+
+}
+
+.shapeListElement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 2rem;
+
+  cursor: pointer;
+  padding: .1rem .4rem;
+  border-radius: .2rem;
+
+  &:hover {
+    background-color: rgba(var(--bg-color-rgb), 0.8);
+  }
+
+  & > .text {
+    max-width: 12rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  & > .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .3rem;
+
+    & > .icon {
+      font-size: .9rem;
+      &:hover > svg {
+        stroke: var(--warning-color);
+      }
+    }
+  }
+}

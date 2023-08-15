@@ -5,7 +5,7 @@ import { useViewer } from "../../../context/ViewerContext";
 import DragWrapper from "./DragWrapper";
 import ZoomWrapper from "./ZoomWrapper";
 import ZoomButtons from "./ZoomButtons";
-import ShapeList from "../ShapeListComponent/ShapeList";
+import ShapeList from "../../ShapeListComponent/ShapeList";
 
 import "./zoom.scss";
 import IconClickWrapper from "../icons/IconClickWrapper";

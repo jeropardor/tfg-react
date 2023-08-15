@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 import ShapeListElement from "./ShapeListElement";
-import { useShapes } from "../../../context/ShapesContext";
+import { useShapes } from "../../context/ShapesContext";
 
 import "./shapeList.scss";
 
@@ -11,7 +11,7 @@ const ShapeList = ({ handleCentering, isVisible }) => {
   return (
     <div
       className={classNames("shapeList", {
-        "dis-hidden": isVisible,
+        "dis-hidden": !isVisible,
       })}
     >
       <div>

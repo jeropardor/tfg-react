@@ -1,0 +1,53 @@
+
+
+.defaultShape {
+    position: absolute;
+    color: white;
+    border: 2px solid red;
+    border-radius: .5rem;
+    background-color: rgba(255, 0, 0, 0.2);
+
+    &.selected {
+        outline: 1px solid blue;
+    }
+}
+
+.nameShape {
+    position: absolute;
+    transform: translate(-50%, 0);
+
+    padding: .1rem .5rem;
+    border: 2px solid white;
+    border-radius: .5rem;
+    color: white;
+    background-color: black;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -95%);
+        width: 0; 
+        height: 0; 
+        border-left: .5rem solid transparent;
+        border-right: .5rem solid transparent; 
+        border-bottom: .5rem solid black;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -102%);
+        width: 0; 
+        height: 0; 
+        border-left: .7rem solid transparent;
+        border-right: .7rem solid transparent; 
+        border-bottom: .7rem solid white;
+    }
+
+    &.selected {
+        outline: 1px solid blue;
+    }
+}

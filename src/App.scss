@@ -3,6 +3,7 @@
   --bg-color-rgb: 23, 32, 39;
   --text-color: #ffffff;
   --text-color-rgb: 255, 255, 255;
+  --warning-color: #de4040;
 }
 
 .App {
@@ -25,4 +26,27 @@
 }
 .dis-hidden {
   display: none;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #00000061; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff6c; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff97; 
 }

@@ -33,6 +33,7 @@ function shapesReducer(shapes, action) {
           type: action.shapeType,
           text: action.text,
           selected: false,
+          visible: true,
           ...action.position,
         },
       ];
@@ -61,14 +62,15 @@ export const ShapeTypes = {
 };
 
 const initialShapes = [
-  {
+  /* {
     id: 0,
     type: ShapeTypes.Default,
     text: "lorem ipsum",
     selected: false,
+    visible: true,
     x: 0,
     y: 0,
     width: 50,
     height: 50,
-  },
+  }, */
 ];

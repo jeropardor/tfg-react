@@ -8,8 +8,10 @@ import {
   useShapesDispatch,
 } from "../../context/ShapesContext";
 import { useViewer } from "../../context/ViewerContext";
+import DefaultShape from "./shapes/DefaultShape";
 
 import "./shape.scss";
+import NameShape from "./shapes/NameShape";
 
 const ShapeCreation = ({ children }) => {
   const { viewer } = useViewer();
@@ -84,7 +86,7 @@ const ShapeCreation = ({ children }) => {
     shapesDispatch({
       type: "added",
       shapeType: ShapeTypes.Default,
-      text: "placeholder",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, corporis.",
       position: {
         x: newDivPos.x,
         y: newDivPos.y,
@@ -159,33 +161,9 @@ const ShapeCreation = ({ children }) => {
       {/* shapes list */}
       {shapesList.map((shape) => {
         if (shape.type === ShapeTypes.Default)
-          return (
-            <div
-              key={shape.id}
-              className="defaultShape"
-              style={{
-                top: `${shape.y}px`,
-                left: `${shape.x}px`,
-                height: `${shape.height}px`,
-                width: `${shape.width}px`,
-              }}
-            >
-              {shape.text}
-            </div>
-          );
+          return <DefaultShape shape={shape} />;
         else if (shape.type === ShapeTypes.Name)
-          return (
-            <div
-              key={shape.id}
-              className="nameShape"
-              style={{
-                top: `${shape.y}px`,
-                left: `${shape.x}px`,
-              }}
-            >
-              {shape.text}
-            </div>
-          );
+          return <NameShape shape={shape} />;
       })}
       {children}
     </div>
