@@ -10,18 +10,20 @@ const ShapeListElement = ({ handleCentering, shape }) => {
   const shapesDispatch = useShapesDispatch();
 
   return (
-    <div
-      className={classNames("shapeListElement")}
-      onClick={() =>
-        shape.type === ShapeTypes.Default
-          ? handleCentering(
-              shape.x + shape.width / 2,
-              shape.y + shape.height / 2
-            )
-          : handleCentering(shape.x, shape.y)
-      }
-    >
-      <div className="text">{shape.text}</div>
+    <div className={classNames("shapeListElement")}>
+      <div
+        className="text"
+        onClick={() =>
+          shape.type === ShapeTypes.Default
+            ? handleCentering(
+                shape.x + shape.width / 2,
+                shape.y + shape.height / 2
+              )
+            : handleCentering(shape.x, shape.y)
+        }
+      >
+        {shape.text}
+      </div>
       <div className="buttons">
         <IconClickWrapper
           icon={<FiXCircle />}
