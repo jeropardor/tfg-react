@@ -47,6 +47,9 @@ function shapesReducer(shapes, action) {
         }
       });
     }
+    case "selected": {
+      return shapes.map((t) => ({ ...t, selected: t.id === action.id }));
+    }
     case "deleted": {
       return shapes.filter((t) => t.id !== action.id);
     }

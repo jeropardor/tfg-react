@@ -27,11 +27,16 @@ const ShapeCreation = ({ children }) => {
   const [isMouseDown, setIsMouseDown] = useState(false);
 
   // name shape input
+  const inputRef = useRef();
   const [isInputHidden, setIsInputHidden] = useState(true);
   const [inputText, setInputText] = useState("");
 
   useEffect(() => {
     console.log(newDivPos);
+    shapesDispatch({
+      type: "selected",
+      id: null,
+    });
   }, [newDivPos]);
 
   useEffect(() => {
@@ -99,6 +104,7 @@ const ShapeCreation = ({ children }) => {
 
   const handleInputName = () => {
     setIsInputHidden(false);
+    inputRef.current.focus();
   };
 
   const handleInputKeyDown = (e) => {
@@ -113,6 +119,7 @@ const ShapeCreation = ({ children }) => {
         },
       });
       setIsInputHidden(true);
+      setInputText("");
       resetNewDiv();
     }
   };
@@ -140,7 +147,9 @@ const ShapeCreation = ({ children }) => {
       >
         <input
           type="text"
+          ref={inputRef}
           value={inputText}
+          placeholder="type name"
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => handleInputKeyDown(e)}
         />

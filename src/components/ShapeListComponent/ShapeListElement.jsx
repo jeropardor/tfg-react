@@ -9,19 +9,20 @@ import "./shapeList.scss";
 const ShapeListElement = ({ handleCentering, shape }) => {
   const shapesDispatch = useShapesDispatch();
 
+  const handleClick = () => {
+    if (shape.type === ShapeTypes.Default)
+      handleCentering(shape.x + shape.width / 2, shape.y + shape.height / 2);
+    else handleCentering(shape.x, shape.y);
+
+    shapesDispatch({
+      type: "selected",
+      id: shape.id,
+    });
+  };
+
   return (
     <div className={classNames("shapeListElement")}>
-      <div
-        className="text"
-        onClick={() =>
-          shape.type === ShapeTypes.Default
-            ? handleCentering(
-                shape.x + shape.width / 2,
-                shape.y + shape.height / 2
-              )
-            : handleCentering(shape.x, shape.y)
-        }
-      >
+      <div className="text" onClick={handleClick}>
         {shape.text}
       </div>
       <div className="buttons">
