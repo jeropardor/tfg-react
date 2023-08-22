@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { FiChevronLeft, FiLayers } from "react-icons/fi";
 import classNames from "classnames";
 
 import { useViewer } from "../../../context/ViewerContext";
@@ -9,7 +10,6 @@ import ShapeList from "../../ShapeListComponent/ShapeList";
 
 import "./zoom.scss";
 import IconClickWrapper from "../icons/IconClickWrapper";
-import { FiChevronLeft } from "react-icons/fi";
 
 const SCALE_FACTOR = 0.8;
 
@@ -89,7 +89,7 @@ const DragZoomWrapper = ({ children }) => {
         <div className="column-wrapper">
           <IconClickWrapper
             className="hideButton"
-            icon={<FiChevronLeft />}
+            icon={<FiLayers />}
             onClick={() => setIsVisibleShapeList((b) => !b)}
           />
           <ZoomButtons

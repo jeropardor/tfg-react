@@ -1,26 +1,52 @@
-
-
-.defaultShape {
+.shape {
     position: absolute;
-    color: white;
-    border: 2px solid red;
-    border-radius: .5rem;
-    background-color: rgba(255, 0, 0, 0.2);
+
+    .icons {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -110%);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .2rem;
+        margin-bottom: .1rem;
+        
+        & > * {
+            border-radius: .5rem;
+            padding: .2rem;
+            background-color: rgba(var(--bg-color-rgb), 0.8);
+        }
+    }
 
     &.selected {
         outline: 1px solid blue;
     }
 }
 
+.defaultShape {
+    border: 2px solid ;
+    border-radius: .5rem;
+
+    .color-default > & {
+        color: white;
+        border-color: red;
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+}
+
 .nameShape {
     position: absolute;
     transform: translate(-50%, 0);
-
     padding: .1rem .5rem;
-    border: 2px solid white;
     border-radius: .5rem;
-    color: white;
-    background-color: black;
+    border: 2px solid;
+
+    .color-default > & {
+        color: white;
+        border-color: white;
+        background-color: black;
+    }
 
     &::after {
         content: '';
@@ -31,8 +57,12 @@
         width: 0; 
         height: 0; 
         border-left: .5rem solid transparent;
-        border-right: .5rem solid transparent; 
-        border-bottom: .5rem solid black;
+        border-right: .5rem solid transparent;
+        border-bottom: .5rem solid;
+        .color-default > & {
+            border-bottom-color: black;
+        }
+        
     }
     &::before {
         content: '';
@@ -43,7 +73,48 @@
         width: 0; 
         height: 0; 
         border-left: .7rem solid transparent;
-        border-right: .7rem solid transparent; 
-        border-bottom: .7rem solid white;
+        border-right: .7rem solid transparent;
+        border-bottom: .7rem solid; 
+        .color-default > & {
+            border-bottom-color: white;
+        }
+    }
+}
+
+
+.color-red > .defaultShape,
+.color-red > .nameShape {
+    color: white;
+    border-color: red;
+    background-color: rgba(186, 35, 35, 0.297);
+    &::after {
+        border-bottom-color: rgba(186, 35, 35, 0.297);
+    }
+    &::before {
+        border-bottom-color: red;
+    }
+}
+.color-green > .defaultShape,
+.color-green > .nameShape {
+    color: white;
+    border-color: green;
+    background-color: rgba(0, 128, 0, 0.281);
+    &::after {
+        border-bottom-color: rgba(0, 128, 0, 0.281);
+    }
+    &::before {
+        border-bottom-color: green;
+    }
+}
+.color-blue > .defaultShape,
+.color-blue > .nameShape {
+    color: white;
+    border-color: blue;
+    background-color: rgba(0, 0, 255, 0.297);
+    &::after {
+        border-bottom-color: rgba(0, 0, 255, 0.297);
+    }
+    &::before {
+        border-bottom-color: blue;
     }
 }

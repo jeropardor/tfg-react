@@ -12,6 +12,7 @@ import DefaultShape from "./shapes/DefaultShape";
 
 import "./shape.scss";
 import NameShape from "./shapes/NameShape";
+import ShapeWrapper from "./ShapeWrapper";
 
 const ShapeCreation = ({ children }) => {
   const { viewer } = useViewer();
@@ -124,6 +125,17 @@ const ShapeCreation = ({ children }) => {
     }
   };
 
+  const returnShapes = (shape) => {
+    switch (shape.type) {
+      case ShapeTypes.Default:
+        return <DefaultShape shape={shape} />;
+      case ShapeTypes.Name:
+        return <NameShape shape={shape} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div
       ref={containerRef}
@@ -168,12 +180,9 @@ const ShapeCreation = ({ children }) => {
       ></div>
       {/* ----------------------------------------- */}
       {/* shapes list */}
-      {shapesList.map((shape) => {
-        if (shape.type === ShapeTypes.Default)
-          return <DefaultShape shape={shape} />;
-        else if (shape.type === ShapeTypes.Name)
-          return <NameShape shape={shape} />;
-      })}
+      {shapesList.map((shape) => (
+        <ShapeWrapper shape={shape}>{returnShapes(shape)}</ShapeWrapper>
+      ))}
       {children}
     </div>
   );

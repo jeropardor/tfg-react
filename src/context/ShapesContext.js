@@ -34,6 +34,7 @@ function shapesReducer(shapes, action) {
           text: action.text,
           selected: false,
           visible: true,
+          color: 0,
           ...action.position,
         },
       ];
@@ -46,6 +47,13 @@ function shapesReducer(shapes, action) {
           return t;
         }
       });
+    }
+    case "colored": {
+      return shapes.map((t) =>
+        t.id === action.shape.id
+          ? { ...t, color: action.shape.color++ % ShapeColors.length }
+          : t
+      );
     }
     case "selected": {
       return shapes.map((t) => ({ ...t, selected: t.id === action.id }));
@@ -63,6 +71,7 @@ export const ShapeTypes = {
   Default: "default",
   Name: "name",
 };
+export const ShapeColors = ["default", "red", "green", "blue"];
 
 const initialShapes = [
   /* {
@@ -75,5 +84,6 @@ const initialShapes = [
     y: 0,
     width: 50,
     height: 50,
+    color: 0,
   }, */
 ];

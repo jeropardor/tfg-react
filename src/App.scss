@@ -22,10 +22,10 @@
 /* -------------------------------------------------------------------------- */
 
 .vis-hidden {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 .dis-hidden {
-  display: none;
+  display: none !important;
 }
 
 
