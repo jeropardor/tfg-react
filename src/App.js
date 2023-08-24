@@ -4,15 +4,18 @@ import { ModeProvider } from "./context/ModeContext";
 import UI from "./components/ui/UI";
 
 import "./App.scss";
+import { UsersProvider } from "./context/UsersContext";
 
 const App = () => {
   return (
     <IntlWrapper>
-      <ModeProvider>
-        <div className="App">
-          <UI />
-        </div>
-      </ModeProvider>
+      <UsersProvider>
+        <ModeProvider>
+          <div className="App">
+            <UI />
+          </div>
+        </ModeProvider>
+      </UsersProvider>
     </IntlWrapper>
   );
 };

@@ -24,6 +24,24 @@
     border-bottom-right-radius: .5rem;
     border-top-left-radius: .5em;
     cursor: pointer;
-}
+  }
+
+  & > .user-selection {
+    position: absolute;
+    left: .3rem;
+    bottom: .3rem;
+    font-size: 1.5em;
+
+    & > .icon {
+      svg {
+        margin: .2em;
+      }
+  
+      background-color: var(--bg-color);
+      border-bottom-left-radius: .5rem;
+      border-top-right-radius: .5em;
+      cursor: pointer;
+    }
+  }
 
 }
