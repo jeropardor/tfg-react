@@ -26,10 +26,10 @@ const ShapeWrapper = ({ shape, children }) => {
 
   return (
     <div
-      key={shape.id}
       className={classNames(`shape color-${ShapeColors[shape.color]}`, {
         "dis-hidden": !shape.visible,
         selected: shape.selected,
+        editable: shape.editable,
       })}
       style={{
         top: `${shape.y}px`,
@@ -62,7 +62,12 @@ const ShapeWrapper = ({ shape, children }) => {
         />
         <IconClickWrapper
           icon={<FiEdit />}
-          onClick={() => console.log("edit")}
+          onClick={() =>
+            shapesDispatch({
+              type: "changed",
+              shape: { ...shape, editable: !shape.editable },
+            })
+          }
         />
         <IconClickWrapper
           icon={<BiColor />}

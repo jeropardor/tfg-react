@@ -22,11 +22,19 @@
     &.selected {
         outline: 1px solid blue;
     }
+
+    caret-color: transparent;
+    &.editable {
+        caret-color: auto;
+        background-color: aqua;
+    }
 }
 
 .defaultShape {
     border: 2px solid ;
     border-radius: .5rem;
+    overflow: hidden;
+    resize: none;
 
     .color-default > & {
         color: white;

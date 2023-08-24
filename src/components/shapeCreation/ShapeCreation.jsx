@@ -181,7 +181,9 @@ const ShapeCreation = ({ children }) => {
       {/* ----------------------------------------- */}
       {/* shapes list */}
       {shapesList.map((shape) => (
-        <ShapeWrapper shape={shape}>{returnShapes(shape)}</ShapeWrapper>
+        <ShapeWrapper key={shape.id} shape={shape}>
+          {returnShapes(shape)}
+        </ShapeWrapper>
       ))}
       {children}
     </div>

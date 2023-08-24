@@ -6,7 +6,6 @@ import "./shapes.scss";
 const NameShape = ({ shape }) => {
   return (
     <div
-      key={shape.id}
       className={classNames("nameShape")}
       /* style={{
         top: `${shape.y}px`,

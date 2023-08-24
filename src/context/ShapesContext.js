@@ -33,6 +33,7 @@ function shapesReducer(shapes, action) {
           type: action.shapeType,
           text: action.text,
           selected: false,
+          editable: false,
           visible: true,
           color: 0,
           ...action.position,
