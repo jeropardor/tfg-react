@@ -20,6 +20,10 @@ const DefaultShape = ({ shape }) => {
     });
   };
 
+  useEffect(() => {
+    if (shape.editable) textAreaRef.current.focus();
+  }, [shape.editable]);
+
   return (
     <textarea
       ref={textAreaRef}
