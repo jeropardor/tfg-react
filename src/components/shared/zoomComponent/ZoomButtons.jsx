@@ -7,31 +7,16 @@ import { Modes, useMode } from "../../../context/ModeContext";
 
 import "./zoom.scss";
 
-const ZoomButtons = ({
-  isMoving,
-  setIsMoving,
-  resetPosition,
-  handleScaleUp,
-  handleScaleDown,
-}) => {
+const ZoomButtons = ({ resetPosition, handleScaleUp, handleScaleDown }) => {
   const { mode, setMode } = useMode();
-
-  useEffect(() => {
-    if (mode == Modes.Create) setIsMoving(false);
-  }, [mode]);
 
   return (
     <div className="zoomButtons">
       <IconClickWrapper
         icon={<FiMove />}
-        onClick={() => {
-          setIsMoving((b) => !b);
-          setMode((oldMode) =>
-            oldMode == Modes.Create ? Modes.Defaut : oldMode
-          );
-        }}
+        onClick={() => setMode(Modes.Defaut)}
         className={classNames({
-          "zoomButton-selected": isMoving,
+          "zoomButton-selected": mode === Modes.Defaut,
         })}
       />
       <IconClickWrapper icon={<FiZoomIn />} onClick={handleScaleUp} />

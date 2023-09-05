@@ -2,7 +2,7 @@
     "common.yes": "yes",
     "common.no": "no",
 
-    "options.default": "Default",
+    "options.default": "Move Tool",
     "options.create": "Create shape",
     "options.name": "Add name"
 }

@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { FiXCircle, FiEye, FiEyeOff } from "react-icons/fi";
 
+import { Can } from "../../context/rbac/Can";
 import { ShapeTypes, useShapesDispatch } from "../../context/ShapesContext";
 import IconClickWrapper from "../shared/icons/IconClickWrapper";
 
@@ -26,15 +27,17 @@ const ShapeListElement = ({ handleCentering, shape }) => {
         {shape.text}
       </div>
       <div className="buttons">
-        <IconClickWrapper
-          icon={<FiXCircle />}
-          onClick={() =>
-            shapesDispatch({
-              type: "deleted",
-              id: shape.id,
-            })
-          }
-        />
+        <Can I="delete" a="shape">
+          <IconClickWrapper
+            icon={<FiXCircle />}
+            onClick={() =>
+              shapesDispatch({
+                type: "deleted",
+                id: shape.id,
+              })
+            }
+          />
+        </Can>
         <IconClickWrapper
           icon={shape.visible ? <FiEye /> : <FiEyeOff />}
           onClick={() =>

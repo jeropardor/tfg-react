@@ -1,6 +1,12 @@
 import classNames from "classnames";
-import { FiMousePointer, FiPlusSquare, FiAlertCircle } from "react-icons/fi";
+import {
+  FiMousePointer,
+  FiMove,
+  FiPlusSquare,
+  FiAlertCircle,
+} from "react-icons/fi";
 
+import { Can } from "../../context/rbac/Can";
 import { Modes, useMode } from "../../context/ModeContext";
 import OptionButton from "./OptionButton";
 
@@ -9,27 +15,32 @@ import "./sidePanel.scss";
 const SidePanel = ({ isVisible }) => {
   const { mode, setMode } = useMode();
 
-  const modes = [
-    { id: Modes.Defaut, icon: <FiMousePointer /> },
-    { id: Modes.Create, icon: <FiPlusSquare /> },
-    { id: Modes.Name, icon: <FiAlertCircle /> },
-  ];
-
   return (
     <div
       className={classNames("sidePanel", {
         "dis-hidden": !isVisible,
       })}
     >
-      {modes.map((option) => (
+      <OptionButton
+        icon={<FiMove />}
+        text={"options." + Modes.Defaut}
+        onClick={() => setMode(Modes.Defaut)}
+        className={classNames({ selected: Modes.Defaut === mode })}
+      />
+      <Can I="create" a="shape">
         <OptionButton
-          key={option.id}
-          icon={option.icon}
-          text={"options." + option.id}
-          onClick={() => setMode(option.id)}
-          className={classNames({ selected: option.id === mode })}
+          icon={<FiPlusSquare />}
+          text={"options." + Modes.Create}
+          onClick={() => setMode(Modes.Create)}
+          className={classNames({ selected: Modes.Create === mode })}
         />
-      ))}
+        <OptionButton
+          icon={<FiAlertCircle />}
+          text={"options." + Modes.Name}
+          onClick={() => setMode(Modes.Name)}
+          className={classNames({ selected: Modes.Name === mode })}
+        />
+      </Can>
     </div>
   );
 };

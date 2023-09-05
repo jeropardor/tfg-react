@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { FiXCircle, FiEye, FiEyeOff, FiEdit } from "react-icons/fi";
 import { BiColor } from "react-icons/bi";
 
+import { Can } from "../../context/rbac/Can";
 import {
   ShapeColors,
   ShapeTypes,
@@ -42,39 +43,43 @@ const ShapeWrapper = ({ shape, children }) => {
           "dis-hidden": !shape.selected,
         })}
       >
-        <IconClickWrapper
-          icon={<FiXCircle />}
-          onClick={() =>
-            shapesDispatch({
-              type: "deleted",
-              id: shape.id,
-            })
-          }
-        />
+        <Can I="delete" a="shape">
+          <IconClickWrapper
+            icon={<FiXCircle />}
+            onClick={() =>
+              shapesDispatch({
+                type: "deleted",
+                id: shape.id,
+              })
+            }
+          />
+        </Can>
+        <Can I="update" a="shape">
+          <IconClickWrapper
+            icon={<FiEdit />}
+            onClick={() =>
+              shapesDispatch({
+                type: "changed",
+                shape: { ...shape, editable: !shape.editable },
+              })
+            }
+          />
+          <IconClickWrapper
+            icon={<BiColor />}
+            onClick={() =>
+              shapesDispatch({
+                type: "colored",
+                shape: shape,
+              })
+            }
+          />
+        </Can>
         <IconClickWrapper
           icon={shape.visible ? <FiEye /> : <FiEyeOff />}
           onClick={() =>
             shapesDispatch({
               type: "changed",
               shape: { ...shape, visible: !shape.visible },
-            })
-          }
-        />
-        <IconClickWrapper
-          icon={<FiEdit />}
-          onClick={() =>
-            shapesDispatch({
-              type: "changed",
-              shape: { ...shape, editable: !shape.editable },
-            })
-          }
-        />
-        <IconClickWrapper
-          icon={<BiColor />}
-          onClick={() =>
-            shapesDispatch({
-              type: "colored",
-              shape: shape,
             })
           }
         />

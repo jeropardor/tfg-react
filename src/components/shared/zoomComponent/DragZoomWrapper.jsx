@@ -2,29 +2,32 @@ import { useEffect, useRef, useState } from "react";
 import { FiChevronLeft, FiLayers } from "react-icons/fi";
 import classNames from "classnames";
 
+import { Modes, useMode } from "../../../context/ModeContext";
 import { useViewer } from "../../../context/ViewerContext";
 import DragWrapper from "./DragWrapper";
 import ZoomWrapper from "./ZoomWrapper";
+import IconClickWrapper from "../icons/IconClickWrapper";
 import ZoomButtons from "./ZoomButtons";
 import ShapeList from "../../ShapeListComponent/ShapeList";
 
 import "./zoom.scss";
-import IconClickWrapper from "../icons/IconClickWrapper";
 
 const SCALE_FACTOR = 0.8;
 
 const DragZoomWrapper = ({ children }) => {
+  const { mode } = useMode();
   const { viewer, setViewer } = useViewer();
 
   const zoomRef = useRef();
   const viewRef = useRef();
 
-  const [isMoving, setIsMoving] = useState(false);
+  // const [isMoving, setIsMoving] = useState(false);
 
   const [isVisibleShapeList, setIsVisibleShapeList] = useState(false);
 
   const handleDragMove = (e) => {
-    if (!isMoving) return;
+    // if (!isMoving) return;
+    if (mode !== Modes.Defaut) return;
 
     setViewer((params) => ({
       ...params,
@@ -58,15 +61,11 @@ const DragZoomWrapper = ({ children }) => {
   const handleScaleUp = () => handleScale(2);
   const handleScaleDown = () => handleScale(0.5);
 
-  /* useEffect(() => {
-    console.log(viewer);
-  }, [viewer]); */
-
   return (
     <div className="dragZoomWrapper-window">
       <DragWrapper
         onDragMove={handleDragMove}
-        className={classNames({ isMoving: isMoving })}
+        className={classNames({ isMoving: mode === Modes.Defaut })}
       >
         <ZoomWrapper handleScale={handleScale} innerRef={zoomRef}>
           <div
@@ -93,8 +92,6 @@ const DragZoomWrapper = ({ children }) => {
             onClick={() => setIsVisibleShapeList((b) => !b)}
           />
           <ZoomButtons
-            isMoving={isMoving}
-            setIsMoving={setIsMoving}
             resetPosition={resetPosition}
             handleScaleUp={handleScaleUp}
             handleScaleDown={handleScaleDown}

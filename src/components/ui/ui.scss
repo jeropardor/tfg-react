@@ -36,12 +36,10 @@
       svg {
         margin: .2em;
       }
-  
-      background-color: var(--bg-color);
-      border-bottom-left-radius: .5rem;
-      border-top-right-radius: .5em;
       cursor: pointer;
     }
+    background-color: var(--bg-color);
+    border-bottom-left-radius: .5rem;
+    border-top-right-radius: .5em;
   }
-
 }

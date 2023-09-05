@@ -33,7 +33,7 @@ const ShapeCreation = ({ children }) => {
   const [inputText, setInputText] = useState("");
 
   useEffect(() => {
-    console.log(newDivPos);
+    // console.log(newDivPos);
     shapesDispatch({
       type: "selected",
       id: null,
