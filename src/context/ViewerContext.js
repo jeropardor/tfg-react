@@ -5,6 +5,7 @@ export const useViewer = () => useContext(ViewerContext);
 
 export const ViewerProvider = ({ children }) => {
   const [viewer, setViewer] = useState({
+    image: null,
     x: 0,
     y: 0,
     scale: 1,

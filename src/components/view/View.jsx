@@ -4,17 +4,22 @@ import DragZoomWrapper from "../shared/zoomComponent/DragZoomWrapper";
 
 import "./view.scss";
 import ShapeCreation from "../shapeCreation/ShapeCreation";
+import { useViewer } from "../../context/ViewerContext";
 
 const View = () => {
-  const [image, setImage] = useState(null);
+  const { viewer, setViewer } = useViewer();
 
   return (
     <div className="view">
-      {image ? (
+      {viewer.image ? (
         <DragZoomWrapper>
           <ShapeCreation>
             <div className="view-image-container">
-              <img draggable="false" src={URL.createObjectURL(image)} alt="" />
+              <img
+                draggable="false"
+                src={URL.createObjectURL(viewer.image)}
+                alt=""
+              />
             </div>
           </ShapeCreation>
         </DragZoomWrapper>
@@ -22,7 +27,9 @@ const View = () => {
         <input
           type="file"
           name="image"
-          onChange={(event) => setImage(event.target.files[0])}
+          onChange={(e) =>
+            setViewer((viewer) => ({ ...viewer, image: e.target.files[0] }))
+          }
         />
       )}
     </div>
