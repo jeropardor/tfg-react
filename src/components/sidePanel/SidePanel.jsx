@@ -1,19 +1,41 @@
 import classNames from "classnames";
+import { saveAs } from "file-saver";
+import JSZip from "jszip";
+
 import {
   FiMousePointer,
   FiMove,
   FiPlusSquare,
   FiAlertCircle,
+  FiDownload,
 } from "react-icons/fi";
 
 import { Can } from "../../context/rbac/Can";
 import { Modes, useMode } from "../../context/ModeContext";
+import { useShapes } from "../../context/ShapesContext";
+import { useViewer } from "../../context/ViewerContext";
 import OptionButton from "./OptionButton";
 
 import "./sidePanel.scss";
 
 const SidePanel = ({ isVisible }) => {
   const { mode, setMode } = useMode();
+  const shapes = useShapes();
+  const { viewer } = useViewer();
+
+  const download = (json, image) => {
+    const zip = new JSZip();
+    zip.file(image.name, image);
+
+    const shapesFile = new File([JSON.stringify(json)], "shapes.json", {
+      type: "text/json",
+    });
+    zip.file(shapesFile.name, shapesFile);
+
+    zip.generateAsync({ type: "blob" }).then(function (content) {
+      saveAs(content, "data.zip");
+    });
+  };
 
   return (
     <div
@@ -41,6 +63,11 @@ const SidePanel = ({ isVisible }) => {
           className={classNames({ selected: Modes.Name === mode })}
         />
       </Can>
+      <OptionButton
+        icon={<FiDownload />}
+        text="options.download"
+        onClick={() => download(shapes, viewer.image)}
+      />
     </div>
   );
 };

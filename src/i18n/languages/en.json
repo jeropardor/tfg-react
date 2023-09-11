@@ -4,5 +4,6 @@
 
     "options.default": "Move Tool",
     "options.create": "Create shape",
-    "options.name": "Add name"
+    "options.name": "Add name",
+    "options.download": "Download"
 }

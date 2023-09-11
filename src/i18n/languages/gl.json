@@ -4,5 +4,6 @@
 
     "options.default": "Mover",
     "options.create": "Crear forma",
-    "options.name": "Engadir nome"
+    "options.name": "Engadir nome",
+    "options.download": "Descargar"
 }
