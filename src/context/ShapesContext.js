@@ -25,6 +25,9 @@ export function useShapesDispatch() {
 
 function shapesReducer(shapes, action) {
   switch (action.type) {
+    case "imported": {
+      return [...action.shapes];
+    }
     case "added": {
       return [
         ...shapes,

@@ -13,6 +13,9 @@
 .view-image-container {
   border: 1px solid rgba(var(--bg-color-rgb), 0.4);
 
+  -webkit-box-shadow: 0 0 10px 0 #00000024;
+  box-shadow: 0 0 10px 0 #00000024;
+
   & > img {
     user-drag: none;
     -webkit-user-drag: none;

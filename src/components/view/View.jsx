@@ -1,13 +1,14 @@
 import { useState } from "react";
 
 import DragZoomWrapper from "../shared/zoomComponent/DragZoomWrapper";
-
-import "./view.scss";
 import ShapeCreation from "../shapeCreation/ShapeCreation";
 import { useViewer } from "../../context/ViewerContext";
 
+import "./view.scss";
+import FileImport from "./FileImport";
+
 const View = () => {
-  const { viewer, setViewer } = useViewer();
+  const { viewer } = useViewer();
 
   return (
     <div className="view">
@@ -24,13 +25,7 @@ const View = () => {
           </ShapeCreation>
         </DragZoomWrapper>
       ) : (
-        <input
-          type="file"
-          name="image"
-          onChange={(e) =>
-            setViewer((viewer) => ({ ...viewer, image: e.target.files[0] }))
-          }
-        />
+        <FileImport />
       )}
     </div>
   );

@@ -30,6 +30,11 @@
   }
 }
 
+.zoomWrapper {
+  -webkit-box-shadow:inset 0 0 20px 0 #00000083;
+  box-shadow:inset 0 0 20px 0 #00000083;
+}
+
 .sideOptions {
   position: absolute;
   right: 0;
