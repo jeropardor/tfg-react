@@ -21,12 +21,9 @@ const DragZoomWrapper = ({ children }) => {
   const zoomRef = useRef();
   const viewRef = useRef();
 
-  // const [isMoving, setIsMoving] = useState(false);
-
   const [isVisibleShapeList, setIsVisibleShapeList] = useState(false);
 
   const handleDragMove = (e) => {
-    // if (!isMoving) return;
     if (mode !== Modes.Defaut) return;
 
     setViewer((params) => ({

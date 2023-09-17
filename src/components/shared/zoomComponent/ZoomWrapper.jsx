@@ -2,7 +2,7 @@ import "./zoom.scss";
 
 const ZoomWrapper = ({ handleScale, children, style, className, innerRef }) => {
   const onWheel = (e) => {
-    handleScale(e.deltaY < 0 ? 2 : 0.5);
+    handleScale(e.deltaY < 0 ? 1.5 : 0.75);
   };
 
   return (
