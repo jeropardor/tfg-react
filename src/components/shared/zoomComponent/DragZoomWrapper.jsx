@@ -38,6 +38,7 @@ const DragZoomWrapper = ({ children }) => {
 
   const handleCentering = (x, y) => {
     setViewer((params) => ({
+      ...params,
       x: viewRef.current.clientWidth / 2 - x,
       y: viewRef.current.clientHeight / 2 - y,
       scale: 1,
@@ -45,11 +46,12 @@ const DragZoomWrapper = ({ children }) => {
   };
 
   const resetPosition = () => {
-    setViewer({
+    setViewer((params) => ({
+      ...params,
       x: 0,
       y: 0,
       scale: zoomRef.current.clientHeight / viewRef.current.clientHeight,
-    });
+    }));
   };
 
   const handleScale = (delta) => {
