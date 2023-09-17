@@ -39,9 +39,7 @@ const DefaultShape = ({ shape }) => {
       onChange={(e) => shape.editable && setText(e.target.value)}
       onBlur={handleInputBlur}
       // contentEditable={shape.selected ? "true" : "false"}
-    >
-      {text}
-    </textarea>
+    ></textarea>
   );
 };
 
