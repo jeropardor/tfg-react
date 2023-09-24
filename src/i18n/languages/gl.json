@@ -5,5 +5,8 @@
     "options.default": "Mover",
     "options.create": "Crear forma",
     "options.name": "Engadir nome",
-    "options.download": "Descargar"
+    "options.download": "Descargar",
+    "options.category": "Crear categoría",
+
+    "category.create.title": "Crear categoría"
 }

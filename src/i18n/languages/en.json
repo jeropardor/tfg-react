@@ -5,5 +5,8 @@
     "options.default": "Move Tool",
     "options.create": "Create shape",
     "options.name": "Add name",
-    "options.download": "Download"
+    "options.download": "Download",
+    "options.category": "Create category",
+
+    "category.create.title": "Create category"
 }

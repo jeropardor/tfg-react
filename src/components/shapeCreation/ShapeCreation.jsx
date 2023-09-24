@@ -8,11 +8,11 @@ import {
   useShapesDispatch,
 } from "../../context/ShapesContext";
 import { useViewer } from "../../context/ViewerContext";
+import ShapeWrapper from "./shapes/ShapeWrapper";
 import DefaultShape from "./shapes/DefaultShape";
+import NameShape from "./shapes/NameShape";
 
 import "./shape.scss";
-import NameShape from "./shapes/NameShape";
-import ShapeWrapper from "./ShapeWrapper";
 
 const ShapeCreation = ({ children }) => {
   const { viewer } = useViewer();

@@ -22,9 +22,13 @@ const ShapeListElement = ({ handleCentering, shape }) => {
   };
 
   return (
-    <div className={classNames("shapeListElement")}>
+    <div
+      className={classNames("shapeListElement", {
+        selected: shape.selected,
+      })}
+    >
       <div className="text" onClick={handleClick}>
-        {shape.text}
+        {shape.text} {shape.category}
       </div>
       <div className="buttons">
         <Can I="delete" a="shape">

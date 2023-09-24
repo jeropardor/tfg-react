@@ -8,6 +8,7 @@ import {
   FiPlusSquare,
   FiAlertCircle,
   FiDownload,
+  FiFolderPlus,
 } from "react-icons/fi";
 
 import { Can } from "../../context/rbac/Can";
@@ -18,7 +19,7 @@ import OptionButton from "./OptionButton";
 
 import "./sidePanel.scss";
 
-const SidePanel = ({ isVisible }) => {
+const SidePanel = ({ isVisible, setCategoryModal }) => {
   const { mode, setMode } = useMode();
   const shapes = useShapes();
   const { viewer } = useViewer();
@@ -61,6 +62,11 @@ const SidePanel = ({ isVisible }) => {
           text={"options." + Modes.Name}
           onClick={() => setMode(Modes.Name)}
           className={classNames({ selected: Modes.Name === mode })}
+        />
+        <OptionButton
+          icon={<FiFolderPlus />}
+          text="options.category"
+          onClick={() => setCategoryModal(true)}
         />
       </Can>
       <OptionButton

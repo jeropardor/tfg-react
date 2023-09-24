@@ -1,0 +1,49 @@
+
+#category-modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    & > .close {
+      float: right;
+      font-size: 1.2rem;
+      margin: .3rem;
+      cursor: pointer;
+    }
+
+    & > form {
+      margin: 1rem;
+
+      & > .title {
+        margin-bottom: 1rem;
+      }
+
+      & > label {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: .8rem;
+        margin-top: .5rem;
+      }
+      & input, & button {
+        padding: .3rem .5rem;
+        color: var(--text-color);
+        background-color: rgba(255, 255, 255, 0.234);
+        border: .1rem solid var(--text-color);
+        border-radius: .3rem;
+      }
+
+      & > .buttons {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+        gap: 1rem;
+      }
+    }
+
+    background-color: var(--bg-color);
+    border-radius: .5rem;
+  }

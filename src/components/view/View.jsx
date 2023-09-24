@@ -1,11 +1,11 @@
 import { useState } from "react";
 
+import { useViewer } from "../../context/ViewerContext";
 import DragZoomWrapper from "../shared/zoomComponent/DragZoomWrapper";
 import ShapeCreation from "../shapeCreation/ShapeCreation";
-import { useViewer } from "../../context/ViewerContext";
+import FileImport from "./FileImport";
 
 import "./view.scss";
-import FileImport from "./FileImport";
 
 const View = () => {
   const { viewer } = useViewer();

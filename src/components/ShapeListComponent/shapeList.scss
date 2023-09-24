@@ -3,17 +3,63 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .5em;
+  // gap: .5em;
+  padding: .5rem .25rem;
+  text-align: left;
 
   overflow: hidden;
 
   color: var(--text-color);
-  background-color: rgba(var(--bg-color-rgb), 0.6);
+  background-color: rgba(var(--bg-color-rgb), 0.8);
+}
 
-  & > div {
-    margin: .2rem .3rem;
+.bar {
+  width: 100%;
+  border: .15rem solid rgba(255, 255, 255, 0.216);
+  border-radius: 1rem;
+}
+
+.listUngrouped {
+  width: 100%;
+  // margin-top: 1rem;
+  // border-top: 3px solid rgba(255, 255, 255, 0.216);
+}
+
+.shapeListCategory {
+  width: 100%;
+  padding: .2rem 0;
+
+  //border: 1px solid red;
+
+  & > .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: .2rem .3rem;
+
+    //border: 1px solid red;
+
+    & > .name {
+      flex-grow: 1;
+    }
+    & > .icon {
+      cursor: pointer;
+    }
   }
-
+  & > .items {
+    display: none;
+  }
+  &.expanded {
+    box-shadow: inset 0px -10px 10px -4px rgba(0, 0, 0, 0.131);
+  }
+  &.expanded > .header {
+    border-bottom: .1rem solid rgba(0, 0, 0, 0.315);
+    box-shadow: 0px 17px 10px -4px rgba(0, 0, 0, 0.307);
+  }
+  &.expanded > .items {
+    display: inherit;
+  }
 }
 
 .shapeListElement {
@@ -24,7 +70,8 @@
   gap: .4rem;
 
   min-height: 2rem;
-
+  margin: .2rem .3rem;
+  
   cursor: pointer;
   padding: .1rem .4rem;
   border-radius: .2rem;
@@ -34,6 +81,7 @@
   }
 
   & > .text {
+    flex-grow: 1;
     max-width: 12rem;
     overflow: hidden;
     white-space: nowrap;

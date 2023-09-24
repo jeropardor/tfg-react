@@ -3,18 +3,16 @@ import classNames from "classnames";
 import { FiXCircle, FiEye, FiEyeOff, FiEdit } from "react-icons/fi";
 import { BiColor } from "react-icons/bi";
 
-import { Can } from "../../context/rbac/Can";
-import {
-  ShapeColors,
-  ShapeTypes,
-  useShapesDispatch,
-} from "../../context/ShapesContext";
-import IconClickWrapper from "../shared/icons/IconClickWrapper";
+import { Can } from "../../../context/rbac/Can";
+import { ShapeColors, useShapesDispatch } from "../../../context/ShapesContext";
+import { useCategories } from "../../../context/CategoryContext";
+import IconClickWrapper from "../../shared/icons/IconClickWrapper";
 
-import "./shapes/shapes.scss";
+import "./shapes.scss";
 
 const ShapeWrapper = ({ shape, children }) => {
   const shapesDispatch = useShapesDispatch();
+  const categories = useCategories();
 
   const [optionsVisible, setOptionsVisible] = useState(false);
 
@@ -22,6 +20,14 @@ const ShapeWrapper = ({ shape, children }) => {
     shapesDispatch({
       type: "selected",
       id: shape.id,
+    });
+  };
+
+  const handleCategory = (e) => {
+    console.log(parseInt(e.target.value));
+    shapesDispatch({
+      type: "changed",
+      shape: { ...shape, category: e.target.value },
     });
   };
 
@@ -83,6 +89,16 @@ const ShapeWrapper = ({ shape, children }) => {
             })
           }
         />
+        <Can I="update" a="shape">
+          <select value={shape.category} onChange={handleCategory}>
+            <option value={null}>Some option</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </Can>
       </div>
       {children}
     </div>

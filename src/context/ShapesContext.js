@@ -35,6 +35,7 @@ function shapesReducer(shapes, action) {
           id: window.crypto.randomUUID(),
           type: action.shapeType,
           text: action.text,
+          category: null,
           selected: false,
           editable: false,
           visible: true,
@@ -82,6 +83,7 @@ const initialShapes = [
     id: 0,
     type: ShapeTypes.Default,
     text: "lorem ipsum",
+    category: null, // id
     selected: false,
     visible: true,
     x: 0,
