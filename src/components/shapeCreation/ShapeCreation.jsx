@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 
+import { AbilityContext } from "../../context/rbac/Can";
 import { Modes, useMode } from "../../context/ModeContext";
 import {
   ShapeTypes,
@@ -15,6 +16,7 @@ import NameShape from "./shapes/NameShape";
 import "./shape.scss";
 
 const ShapeCreation = ({ children }) => {
+  const ability = useContext(AbilityContext);
   const { viewer } = useViewer();
   const shapesList = useShapes();
   const shapesDispatch = useShapesDispatch();
@@ -180,11 +182,14 @@ const ShapeCreation = ({ children }) => {
       ></div>
       {/* ----------------------------------------- */}
       {/* shapes list */}
-      {shapesList.map((shape) => (
-        <ShapeWrapper key={shape.id} shape={shape}>
-          {returnShapes(shape)}
-        </ShapeWrapper>
-      ))}
+      {shapesList.map(
+        (shape) =>
+          (ability.can("read", "private") || shape.public) && (
+            <ShapeWrapper key={shape.id} shape={shape}>
+              {returnShapes(shape)}
+            </ShapeWrapper>
+          )
+      )}
       {children}
     </div>
   );

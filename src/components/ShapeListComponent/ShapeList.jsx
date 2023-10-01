@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { useShapes } from "../../context/ShapesContext";
+import { useShapes, useShapesDispatch } from "../../context/ShapesContext";
 import { useCategories } from "../../context/CategoryContext";
 import ShapeListElement from "./ShapeListElement";
 import ShapeListGroup from "./ShapeListGroup";
@@ -9,6 +9,7 @@ import "./shapeList.scss";
 
 const ShapeList = ({ handleCentering, isVisible }) => {
   const shapes = useShapes();
+  const shapesDispatch = useShapesDispatch();
   const categories = useCategories();
 
   const getRest = (shapes, categories) => {
@@ -26,6 +27,7 @@ const ShapeList = ({ handleCentering, isVisible }) => {
         <ShapeListGroup
           category={category}
           shapes={shapes.filter((s) => s.category == category.id)}
+          shapesDispatch={shapesDispatch}
           handleCentering={handleCentering}
         />
       ))}
@@ -36,6 +38,7 @@ const ShapeList = ({ handleCentering, isVisible }) => {
             key={shape.id}
             handleCentering={handleCentering}
             shape={shape}
+            shapesDispatch={shapesDispatch}
           />
         ))}
       </div>

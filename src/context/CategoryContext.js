@@ -60,13 +60,13 @@ function categoryReducer(categories, action) {
 const initialCategories = [
   {
     id: 0,
-    name: "polygon",
+    name: "cat1",
     color: "#4c8ffc",
     visible: true,
   },
   {
     id: 1,
-    name: "lorem ipsum",
+    name: "lorem",
     color: "#4c8ccc",
     visible: true,
   },

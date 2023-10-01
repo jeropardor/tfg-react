@@ -24,7 +24,6 @@ const ShapeWrapper = ({ shape, children }) => {
   };
 
   const handleCategory = (e) => {
-    console.log(parseInt(e.target.value));
     shapesDispatch({
       type: "changed",
       shape: { ...shape, category: e.target.value },

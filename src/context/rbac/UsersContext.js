@@ -15,11 +15,12 @@ export const UsersProvider = ({ children }) => {
   const changeUser = (user) => {
     switch (user) {
       case Users.Viewer:
-        ability.update([{ action: "read", subject: "all" }]);
+        ability.update([]); // { action: "read", subject: "all" }
         return setUser(Users.Viewer);
       case Users.Editor:
         ability.update([
           { action: "read", subject: "all" },
+          { action: "read", subject: "private" },
           { action: "create", subject: "shape" },
           { action: "read", subject: "shape" },
           { action: "write", subject: "shape" },

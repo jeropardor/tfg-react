@@ -93,12 +93,20 @@
     flex-direction: row;
     align-items: center;
     gap: .3rem;
+    color: var(--text-color);
 
     & > .icon {
       font-size: .9rem;
       &:hover > svg {
         stroke: var(--warning-color);
       }
+    }
+
+    & > .private {
+      color: red;
+    }
+    & > .public {
+      color: green;
     }
   }
 }

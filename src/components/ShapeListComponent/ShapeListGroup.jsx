@@ -2,16 +2,19 @@ import { useState } from "react";
 import classNames from "classnames";
 import { FiChevronDown, FiChevronUp, FiEye, FiEyeOff } from "react-icons/fi";
 
-import { useShapesDispatch } from "../../context/ShapesContext";
 import { useCategoriesDispatch } from "../../context/CategoryContext";
 import IconClickWrapper from "../shared/icons/IconClickWrapper";
 import ShapeListElement from "./ShapeListElement";
 
 import "./shapeList.scss";
 
-const ShapeListGroup = ({ category, shapes, handleCentering }) => {
+const ShapeListGroup = ({
+  category,
+  shapes,
+  shapesDispatch,
+  handleCentering,
+}) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const shapesDispatch = useShapesDispatch();
   const categoriesDispatch = useCategoriesDispatch();
 
   const handleVisible = () => {

@@ -1,15 +1,14 @@
 import classNames from "classnames";
-import { FiXCircle, FiEye, FiEyeOff } from "react-icons/fi";
+import { FiXCircle, FiEye, FiEyeOff, FiExternalLink } from "react-icons/fi";
 
 import { Can } from "../../context/rbac/Can";
-import { ShapeTypes, useShapesDispatch } from "../../context/ShapesContext";
+import { ShapeTypes } from "../../context/ShapesContext";
 import IconClickWrapper from "../shared/icons/IconClickWrapper";
 
 import "./shapeList.scss";
+import { useEffect } from "react";
 
-const ShapeListElement = ({ handleCentering, shape }) => {
-  const shapesDispatch = useShapesDispatch();
-
+const ShapeListElement = ({ handleCentering, shape, shapesDispatch }) => {
   const handleClick = () => {
     if (shape.type === ShapeTypes.Default)
       handleCentering(shape.x + shape.width / 2, shape.y + shape.height / 2);
@@ -20,6 +19,10 @@ const ShapeListElement = ({ handleCentering, shape }) => {
       id: shape.id,
     });
   };
+
+  useEffect(() => {
+    console.log(shape.text, shape.public ? "public" : "private");
+  }, [shape.selected]);
 
   return (
     <div
@@ -51,6 +54,21 @@ const ShapeListElement = ({ handleCentering, shape }) => {
             })
           }
         />
+        <Can I="update" a="shape">
+          <IconClickWrapper
+            className={classNames({
+              private: !shape.public,
+              public: shape.public,
+            })}
+            icon={<FiExternalLink />}
+            onClick={() =>
+              shapesDispatch({
+                type: "changed",
+                shape: { ...shape, public: !shape.public },
+              })
+            }
+          />
+        </Can>
       </div>
     </div>
   );

@@ -39,6 +39,7 @@ function shapesReducer(shapes, action) {
           selected: false,
           editable: false,
           visible: true,
+          public: true,
           color: 0,
           ...action.position,
         },
