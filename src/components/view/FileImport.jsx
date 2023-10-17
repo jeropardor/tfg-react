@@ -39,14 +39,18 @@ const FileImport = () => {
         });
 
         if (shapesFile && imageFile) {
+          imageFile.async("blob").then((blob) => {
+            blob.type = "image/" + imageFile.name.match(/[^.]+$/)[0];
+            setViewer((viewer) => ({
+              ...viewer,
+              image: blob,
+            }));
+          });
           shapesFile.async("text").then((text) => {
             shapesDispatch({
               type: "imported",
               shapes: JSON.parse(text),
             });
-          });
-          imageFile.async("blob").then((blob) => {
-            setViewer((viewer) => ({ ...viewer, image: blob }));
           });
         }
       });

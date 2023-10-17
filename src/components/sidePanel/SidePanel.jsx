@@ -26,7 +26,12 @@ const SidePanel = ({ isVisible, setCategoryModal }) => {
 
   const download = (json, image) => {
     const zip = new JSZip();
-    zip.file(image.name, image);
+    const types = {
+      "image/jpeg": ".jpg",
+      "image/png": ".png",
+      "image/gif": ".gif",
+    };
+    zip.file("image" + types[image.type], image, { base64: true });
 
     const shapesFile = new File([JSON.stringify(json)], "shapes.json", {
       type: "text/json",
