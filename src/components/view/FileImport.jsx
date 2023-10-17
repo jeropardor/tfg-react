@@ -40,7 +40,8 @@ const FileImport = () => {
 
         if (shapesFile && imageFile) {
           imageFile.async("blob").then((blob) => {
-            blob.type = "image/" + imageFile.name.match(/[^.]+$/)[0];
+            console.log(blob);
+            blob._type = "image/" + imageFile.name.match(/[^.]+$/)[0];
             setViewer((viewer) => ({
               ...viewer,
               image: blob,

@@ -25,6 +25,7 @@ const ShapeList = ({ handleCentering, isVisible }) => {
     >
       {categories.map((category) => (
         <ShapeListGroup
+          key={category.id}
           category={category}
           shapes={shapes.filter((s) => s.category == category.id)}
           shapesDispatch={shapesDispatch}

@@ -32,7 +32,6 @@ const ShapeListGroup = ({
 
   return (
     <div
-      key={category.id}
       className={classNames("shapeListCategory", {
         expanded: isCollapsed,
       })}
