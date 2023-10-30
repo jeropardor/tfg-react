@@ -14,7 +14,7 @@ const ShapeList = ({ handleCentering, isVisible }) => {
 
   const getRest = (shapes, categories) => {
     const keys = categories.map((c) => c.id);
-    return shapes.filter((s) => !keys.includes(parseInt(s.category)));
+    return shapes.filter((s) => !keys.includes(s.category));
   };
 
   return (

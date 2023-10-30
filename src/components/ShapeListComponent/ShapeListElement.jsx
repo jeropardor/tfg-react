@@ -31,7 +31,7 @@ const ShapeListElement = ({ handleCentering, shape, shapesDispatch }) => {
       })}
     >
       <div className="text" onClick={handleClick}>
-        {shape.text} {shape.category}
+        {shape.text}
       </div>
       <div className="buttons">
         <Can I="delete" a="shape">

@@ -24,6 +24,13 @@ const ShapeWrapper = ({ shape, children }) => {
   };
 
   const handleCategory = (e) => {
+    console.log(
+      "assigned to category: [" +
+        e.target.value +
+        "] (" +
+        typeof e.target.value +
+        ")"
+    );
     shapesDispatch({
       type: "changed",
       shape: { ...shape, category: e.target.value },
