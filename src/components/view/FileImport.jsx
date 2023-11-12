@@ -11,7 +11,12 @@ const FileImport = () => {
   const shapesDispatch = useShapesDispatch();
 
   const processFiles = (files) => {
-    const allowedImageTypes = ["image/jpeg", "image/png", "image/gif"];
+    const allowedImageTypes = [
+      "image/jpg",
+      "image/jpeg",
+      "image/png",
+      "image/gif",
+    ];
     const allowedZipTypes = [
       "zip",
       "application/octet-stream",
@@ -19,6 +24,8 @@ const FileImport = () => {
       "application/x-zip",
       "application/x-zip-compressed",
     ];
+
+    console.log(files[0]?.type);
 
     // image
     if (allowedImageTypes.includes(files[0]?.type)) {
