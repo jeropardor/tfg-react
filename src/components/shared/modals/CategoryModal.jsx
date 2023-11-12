@@ -38,16 +38,20 @@ const CategoryModal = ({ isVisible, setIsVisible }) => {
           {intl.formatMessage({ id: "category.create.title" })}
         </div>
         <label htmlFor="name">
-          Name:
+          {intl.formatMessage({ id: "category.create.name" })}
           <input type="text" name="name" required />
         </label>
         <label htmlFor="">
-          Color:
+          {intl.formatMessage({ id: "category.create.color" })}
           <input type="color" name="color" />
         </label>
         <div className="buttons">
-          <button type="reset">Reset</button>
-          <button type="submit">Submit</button>
+          <button type="reset">
+            {intl.formatMessage({ id: "common.reset" })}
+          </button>
+          <button type="submit">
+            {intl.formatMessage({ id: "common.create" })}
+          </button>
         </div>
       </form>
     </div>

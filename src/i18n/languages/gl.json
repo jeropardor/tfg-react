@@ -1,6 +1,8 @@
 {
     "common.yes": "si",
     "common.no": "no",
+    "common.reset": "Reset",
+    "common.create": "Crear",
 
     "options.default": "Mover",
     "options.create": "Crear forma",
@@ -8,5 +10,7 @@
     "options.download": "Descargar",
     "options.category": "Crear categoría",
 
-    "category.create.title": "Crear categoría"
+    "category.create.title": "Crear categoría",
+    "category.create.name": "Nome",
+    "category.create.color": "Color"
 }

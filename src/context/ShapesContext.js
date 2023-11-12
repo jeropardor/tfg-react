@@ -77,7 +77,7 @@ export const ShapeTypes = {
   Default: "default",
   Name: "name",
 };
-export const ShapeColors = ["default", "red", "green", "blue"];
+export const ShapeColors = ["default", "red", "green", "blue"]; // "category"
 
 const initialShapes = [
   /* {
