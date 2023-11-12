@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import classNames from "classnames";
 
+import { AbilityContext } from "../../context/rbac/Can";
 import { useShapes, useShapesDispatch } from "../../context/ShapesContext";
 import { useCategories } from "../../context/CategoryContext";
 import ShapeListElement from "./ShapeListElement";
@@ -8,6 +10,7 @@ import ShapeListGroup from "./ShapeListGroup";
 import "./shapeList.scss";
 
 const ShapeList = ({ handleCentering, isVisible }) => {
+  const ability = useContext(AbilityContext);
   const shapes = useShapes();
   const shapesDispatch = useShapesDispatch();
   const categories = useCategories();
@@ -34,14 +37,17 @@ const ShapeList = ({ handleCentering, isVisible }) => {
       ))}
       {categories.length !== 0 ? <div className="bar"></div> : null}
       <div className="listUngrouped">
-        {getRest(shapes, categories).map((shape) => (
-          <ShapeListElement
-            key={shape.id}
-            handleCentering={handleCentering}
-            shape={shape}
-            shapesDispatch={shapesDispatch}
-          />
-        ))}
+        {getRest(shapes, categories).map(
+          (shape) =>
+            (ability.can("read", "private") || shape.public) && (
+              <ShapeListElement
+                key={shape.id}
+                handleCentering={handleCentering}
+                shape={shape}
+                shapesDispatch={shapesDispatch}
+              />
+            )
+        )}
       </div>
     </div>
   );
