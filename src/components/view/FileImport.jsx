@@ -25,10 +25,9 @@ const FileImport = () => {
       "application/x-zip-compressed",
     ];
 
-    console.log(files[0]?.type);
-
     // image
     if (allowedImageTypes.includes(files[0]?.type)) {
+      files[0]._name = files[0].name.match(/(.+?)(\.[^.]*$|$)/)[1];
       setViewer((viewer) => ({ ...viewer, image: files[0] }));
       return;
 
@@ -42,7 +41,8 @@ const FileImport = () => {
           else if (
             allowedImageTypes.includes("image/" + file.name.match(/[^.]+$/)[0])
           )
-            imageFile = file;
+            file._name = file.name.match(/(.+?)(\.[^.]*$|$)/)[1];
+          imageFile = file;
         });
 
         if (shapesFile && imageFile) {
